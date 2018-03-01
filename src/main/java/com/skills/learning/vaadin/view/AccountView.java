@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 
-@SpringView(name = UserView.VIEW_NAME)
-public class UserView extends VerticalLayout implements View {
-    public static final String VIEW_NAME = "user";
+@SpringView(name = AccountView.VIEW_NAME)
+public class AccountView extends VerticalLayout implements View {
+    public static final String VIEW_NAME = "account";
 
     @Autowired
     private SpringNavigator navigator;

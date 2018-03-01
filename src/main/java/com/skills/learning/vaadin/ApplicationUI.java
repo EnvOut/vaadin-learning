@@ -1,7 +1,9 @@
 package com.skills.learning.vaadin;
 
+import com.skills.learning.vaadin.view.LayoutsView;
 import com.skills.learning.vaadin.view.LoginView;
-import com.skills.learning.vaadin.view.UserView;
+import com.skills.learning.vaadin.view.AccountView;
+import com.skills.learning.vaadin.view.UsersView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewDisplay;
@@ -16,9 +18,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 @SpringUI
 @Theme("valo")
 @SpringViewDisplay
-public class ApplicationUI extends UI implements ViewDisplay {
+//public class ApplicationUI extends UI implements ViewDisplay {
+public class ApplicationUI extends UI  {
     @Autowired
     private SpringNavigator navigator;
+
+//    @Autowired
+    private LayoutsView layoutsView;
 
     private Panel springViewDisplay;
 
@@ -26,22 +32,30 @@ public class ApplicationUI extends UI implements ViewDisplay {
     protected void init(VaadinRequest request) {
 
         final VerticalLayout root = new VerticalLayout();
-        root.setSizeFull();
-        setContent(root);
+        setMobileHtml5DndEnabled(true);
+//        root.setSizeFull();
+//        setContent(root);
 
-        final CssLayout navigationBar = new CssLayout();
-        navigationBar.addStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
-        navigationBar.addComponent(createNavigationButton("Login",
-                LoginView.VIEW_NAME));
-        navigationBar.addComponent(createNavigationButton("Account",
-                UserView.VIEW_NAME));
-        root.addComponent(navigationBar);
+//        final CssLayout navigationBar = new CssLayout();
+//        navigationBar.addStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
+//        navigationBar.addComponent(createNavigationButton("Login",
+//                LoginView.VIEW_NAME));
+//        navigationBar.addComponent(createNavigationButton("Account",
+//                AccountView.VIEW_NAME));
+//        navigationBar.addComponent(createNavigationButton("Users",
+//                UsersView.VIEW_NAME));
+//        navigationBar.addComponent(createNavigationButton("Layouts",
+//                LayoutsView.VIEW_NAME));
 
-        springViewDisplay = new Panel();
-        springViewDisplay.setSizeFull();
-        root.addComponent(springViewDisplay);
-        root.setExpandRatio(springViewDisplay, 1.0f);
+//        root.addComponent(navigationBar);
 
+//        springViewDisplay = new Panel();
+//        springViewDisplay.setSizeFull();
+//        root.addComponent(springViewDisplay);
+//        root.setExpandRatio(springViewDisplay, 1.0f);
+//        setContent(layoutsView);
+        setSizeFull();
+        navigator.navigateTo(LayoutsView.VIEW_NAME);
     }
 
     private Button createNavigationButton(String caption, final String viewName) {
@@ -53,9 +67,9 @@ public class ApplicationUI extends UI implements ViewDisplay {
         return button;
     }
 
-    @Override
-    public void showView(View view) {
-        springViewDisplay.setContent((Component) view);
-    }
+//    @Override
+//    public void showView(View view) {
+//        springViewDisplay.setContent((Component) view);
+//    }
 
 }

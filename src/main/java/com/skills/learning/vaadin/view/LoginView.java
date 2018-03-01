@@ -22,7 +22,7 @@ public class LoginView extends VerticalLayout implements View {
 
     @PostConstruct
     private void init() {
-        Design.read(this);
+//        Design.read(this);
         addComponent(new Label("This is login"));
     }
 
