@@ -18,11 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 @SpringViewDisplay
 @PreserveOnRefresh
 //public class ApplicationUI extends UI implements ViewDisplay {
-public class ApplicationUI extends UI  {
+public class ApplicationUI extends UI {
     @Autowired
     private SpringNavigator navigator;
 
-//    @Autowired
+    //    @Autowired
     private LayoutsView layoutsView;
 
     private Panel springViewDisplay;
@@ -57,8 +57,13 @@ public class ApplicationUI extends UI  {
 //        setContent(new Window("win"));
 //        navigator.navigateTo(LayoutsView.VIEW_NAME);
 //        navigator.navigateTo(WindowView.VIEW_NAME);
-                Window window = new Window("Window");
-        window.setContent(new VerticalLayout(new Button("Button"), new TextArea("Lol")));
+        Window window = new Window("Window");
+
+        TextArea ta1 = new TextArea("Lol");
+        TextArea ta2 = new TextArea("Lol");
+        Button button = new Button("Button", event -> ta2.focus());
+
+        window.setContent(new VerticalLayout(button,ta1,ta2));
 //        window.setClosable(false);
         addWindow(window);
     }
