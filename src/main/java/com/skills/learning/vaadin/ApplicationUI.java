@@ -1,9 +1,7 @@
 package com.skills.learning.vaadin;
 
-import com.skills.learning.vaadin.view.LayoutsView;
-import com.skills.learning.vaadin.view.LoginView;
-import com.skills.learning.vaadin.view.AccountView;
-import com.skills.learning.vaadin.view.UsersView;
+import com.skills.learning.vaadin.view.*;
+import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewDisplay;
@@ -18,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @SpringUI
 @Theme("valo")
 @SpringViewDisplay
+@PreserveOnRefresh
 //public class ApplicationUI extends UI implements ViewDisplay {
 public class ApplicationUI extends UI  {
     @Autowired
@@ -32,7 +31,7 @@ public class ApplicationUI extends UI  {
     protected void init(VaadinRequest request) {
 
         final VerticalLayout root = new VerticalLayout();
-        setMobileHtml5DndEnabled(true);
+//        setMobileHtml5DndEnabled(true);
 //        root.setSizeFull();
 //        setContent(root);
 
@@ -55,7 +54,13 @@ public class ApplicationUI extends UI  {
 //        root.setExpandRatio(springViewDisplay, 1.0f);
 //        setContent(layoutsView);
         setSizeFull();
-        navigator.navigateTo(LayoutsView.VIEW_NAME);
+//        setContent(new Window("win"));
+//        navigator.navigateTo(LayoutsView.VIEW_NAME);
+//        navigator.navigateTo(WindowView.VIEW_NAME);
+                Window window = new Window("Window");
+        window.setContent(new VerticalLayout(new Button("Button"), new TextArea("Lol")));
+//        window.setClosable(false);
+        addWindow(window);
     }
 
     private Button createNavigationButton(String caption, final String viewName) {
